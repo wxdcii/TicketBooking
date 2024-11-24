@@ -1,0 +1,283 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newcastle United vs West Ham United Tickets</title>
+    
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to bottom, #f9f9f9, #e6e6e6);
+        color: #333;
+    }
+    header {
+        background-color: #ffcc00;
+        color: #000;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    header img {
+        max-width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+    header h1 {
+        margin: 0;
+        font-size: 28px;
+        text-transform: uppercase;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    .container {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 0 20px;
+    }
+    .filters {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    .filters select, .filters input {
+        padding: 10px;
+        font-size: 14px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        flex: 1;
+    }
+    .filters button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .filters button:hover {
+        background-color: #0056b3;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: center;
+    }
+    th {
+        background-color: #ffcc00;
+        color: #000;
+        text-transform: uppercase;
+    }
+    .get-now {
+        padding: 8px 15px;
+        background: #28a745;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .get-now:hover {
+        background: #218838;
+    }
+    footer {
+        background-color: #ffcc00;
+        color: #000;
+        text-align: center;
+        padding: 10px 0;
+        margin-top: 20px;
+        box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+
+    .quantity-dropdown {
+        padding: 5px 10px;
+        font-size: 14px;
+        border: 2px solid #007bff;
+        border-radius: 5px;
+        color: #007bff;
+        background-color: #fff;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    .quantity-dropdown:hover {
+        background-color: #007bff;
+        color: #fff;
+    }
+    .get-now {
+        padding: 8px 15px;
+        background: #28a745;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        margin-left: 10px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    .get-now:hover {
+        background: #218838;
+    }
+
+
+</style>
+
+
+
+</style>
+    <script>
+        function filterTickets() {
+            const category = document.querySelector('select[name="category"]').value.toLowerCase();
+            const searchQuery = document.querySelector('input[type="text"]').value.toLowerCase();
+            const rows = document.querySelectorAll("tbody tr");
+
+            rows.forEach(row => {
+                const section = row.querySelector("td:nth-child(1)").textContent.toLowerCase();
+                const matchesCategory = category === "" || section.includes(category);
+                const matchesSearch = searchQuery === "" || section.includes(searchQuery);
+                row.style.display = matchesCategory && matchesSearch ? "" : "none";
+            });
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <img src="seating.jpg" alt="Stadium Banner">
+        <h1>Newcastle United vs West Ham United - English Premier League Tickets</h1>
+    </header>
+
+    <div class="container">
+        <div class="filters">
+            <select name="category" onchange="filterTickets()">
+                <option value="">All Categories</option>
+                <option value="corner">Corners</option>
+                <option value="goal">Behind the Goal</option>
+                <option value="middle">Middle</option>
+            </select>
+            <input type="text" placeholder="Search tickets..." oninput="filterTickets()">
+            <button onclick="filterTickets()">Search</button>
+        </div>
+
+        <!-- Ticket Listings -->
+        
+<table>
+    <thead>
+        <tr>
+            <th>Section</th>
+            <th>Category</th>
+            <th>Ticket Type</th>
+            <th>View</th>
+            <th>Seats</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>L7C - Leazes West Corner</td><td>Corner</td><td>Adult + Under 17</td><td>Unrestricted</td><td>Up to 2 Together</td><td>£39.75</td><td><button class="get-now">Get Now</button></td></tr>
+        <tr><td>L7B - Leazes West Corner</td><td>Corner</td><td>Adult + Under 17</td><td>Unrestricted</td><td>All Together</td><td>£39.77</td><td><button class="get-now">Get Now</button></td></tr>
+        <tr><td>Gallowgate End</td><td>Behind the Goal</td><td>Adult + Under 17</td><td>Unrestricted</td><td>Up to 4 Together</td><td>£42.00</td><td><button class="get-now">Get Now</button></td></tr>
+        <tr><td>Platinum Club</td><td>Middle</td><td>Adult</td><td>Unrestricted</td><td>Up to 2 Together</td><td>£60.00</td><td><button class="get-now">Get Now</button></td></tr>
+        <tr><td>East Stand</td><td>Middle</td><td>Adult</td><td>Unrestricted</td><td>All Together</td><td>£55.00</td><td><button class="get-now">Get Now</button></td></tr>
+        <tr><td>Milburn Stand</td><td>Middle</td><td>Adult + Under 17</td><td>Restricted</td><td>Up to 3 Together</td><td>£37.50</td><td><button class="get-now">Get Now</button></td></tr>
+        <tr><td>Strawberry Corner</td><td>Corner</td><td>Adult</td><td>Unrestricted</td><td>Up to 5 Together</td><td>£45.00</td><td><button class="get-now">Get Now</button></td></tr>
+        <tr><td>North East Stand</td><td>Behind the Goal</td><td>Adult + Under 17</td><td>Unrestricted</td><td>Up to 2 Together</td><td>£50.00</td><td><button class="get-now">Get Now</button></td></tr>
+        <tr><td>South Stand</td><td>Behind the Goal</td><td>Adult</td><td>Unrestricted</td><td>Up to 3 Together</td><td>£48.00</td><td><button class="get-now">Get Now</button></td></tr>
+        <tr><td>West Stand</td><td>Corner</td><td>Adult + Child</td><td>Restricted</td><td>All Together</td><td>£35.00</td><td><button class="get-now">Get Now</button></td></tr>
+        <tr><td>East Corner</td><td>Corner</td><td>Adult + Under 17</td><td>Unrestricted</td><td>Up to 5 Together</td><td>£40.00</td><td><button class="get-now">Get Now</button></td></tr>
+        <tr><td>North Middle</td><td>Middle</td><td>Adult</td><td>Unrestricted</td><td>Up to 6 Together</td><td>£62.00</td><td><button class="get-now">Get Now</button></td></tr>
+    </tbody>
+</table>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Live Football Tickets. All rights reserved.</p>
+    </footer>
+
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const eventName = urlParams.get('event_name');
+    if (eventName) {
+        document.title = eventName;
+        document.querySelector('h1').textContent = eventName + " - Seat Selection";
+    }
+</script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const rows = document.querySelectorAll("tbody tr");
+        const categoryFilter = document.querySelector('select[name="category"]');
+
+        // Filter rows based on category selection
+        categoryFilter.addEventListener("change", () => {
+            const selectedCategory = categoryFilter.value.toLowerCase();
+            rows.forEach(row => {
+                const category = row.querySelector("td:nth-child(2)").textContent.toLowerCase();
+                row.style.display = (selectedCategory === "" || category.includes(selectedCategory)) ? "" : "none";
+            });
+        });
+
+        // Replace all quantity inputs with styled dropdowns
+        rows.forEach(row => {
+            const actionCell = row.querySelector("td:last-child");
+            const dropdown = document.createElement("select");
+            dropdown.className = "quantity-dropdown";
+            for (let i = 1; i <= 10; i++) {
+                const option = document.createElement("option");
+                option.value = i;
+                option.textContent = `${i} tickets`;
+                dropdown.appendChild(option);
+            }
+            actionCell.innerHTML = "";
+            actionCell.appendChild(dropdown);
+            actionCell.appendChild(document.createElement("button")).className = "get-now";
+            actionCell.querySelector("button").textContent = "Get Now";
+        });
+    });
+</script>
+
+
+<script>
+    // Dynamically update page title and header based on the event name from the URL
+    document.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const eventName = urlParams.get('event_name');
+        if (eventName) {
+            document.title = eventName + " - Seat Selection";
+            document.querySelector('h1').textContent = eventName + " - Seat Selection";
+        }
+
+        // Add functionality for "Get Now" buttons
+        document.querySelectorAll('.get-now').forEach((button) => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault(); // Prevent default button behavior
+
+                const row = button.closest('tr');
+                const price = parseFloat(row.querySelector('td:nth-child(6)').textContent.replace('£', ''));
+                const quantity = parseInt(row.querySelector('.quantity-dropdown').value || "1");
+                const totalAmount = price * quantity;
+
+                // Redirect to payment page with query parameters
+                const paymentUrl = `payment.html?event_name=${encodeURIComponent(eventName)}&total=${totalAmount.toFixed(2)}`;
+                window.location.href = paymentUrl;
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

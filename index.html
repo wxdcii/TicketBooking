@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Ticket Booking</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Lato', sans-serif;
+        }
+
+        body {
+            background: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+            overflow-y: scroll;
+        }
+
+        header {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 15px 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            color: #ffcc00;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #fff;
+        }
+
+        .chatbot {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+            max-height: 400px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            display: none;
+            flex-direction: column;
+        }
+
+        .chatbot-header {
+            background: #1a1a1a;
+            color: #ffcc00;
+            padding: 10px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .chatbot-body {
+            padding: 15px;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        .chatbot-options button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 15px;
+            width: 90%;
+            border: none;
+            background: #ffcc00;
+            color: #333;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .chatbot-options button:hover {
+            background: #fff;
+        }
+
+        .toggle-chatbot {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #ffcc00;
+            border: none;
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .section {
+            margin: 20px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            margin-bottom: 15px;
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: #ffcc00;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        } * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Lato', sans-serif;
+        }
+
+        body {
+            background: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 15px 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            color: #ffcc00;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #fff;
+        }
+
+        .hero {
+            text-align: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('camp.jpg') no-repeat center;
+            background-size: cover;
+            color: #fff;
+            padding: 120px 20px;
+            position: relative;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 20px;
+        }
+
+        .hero .button {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #ffcc00;
+            color: #333;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 10px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .hero .button:hover {
+            background: #fff;
+            transform: scale(1.05);
+        }
+
+        .search-bar {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .search-bar input {
+            width: 50%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-bar input:focus {
+            border-color: #ffcc00;
+        }
+
+        .search-bar button {
+            padding: 12px 25px;
+            background: #ffcc00;
+            border: none;
+            color: #333;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .search-bar button:hover {
+            background: #fff;
+            transform: scale(1.05);
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: #ffcc00;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        } 
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sports Ticket Booking</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="events.html">Events</a>
+            <a href="login.html">Login</a>
+        </nav>
+    </header>
+  
+</header>
+
+<div class="search-bar">
+       <input type="text" id="searchInput" placeholder="Search for events...">
+       <button id="searchButton">Search</button>
+   </div>
+   <script>
+       // Sample event data
+       const events = [
+           { name: "Manchester City vs Barcelona", link: "events.html#barcelona" },
+           { name: "Los Angeles Lakers vs Miami Heat", link: "events.html#miami" },
+           { name: "Wimbledon Finals: Djokovic vs Alcaraz", link: "events.html#wimbledon" },
+           { name: "India vs Australia Cricket Final", link: "events.html#cricket" }
+       ];
+
+       document.getElementById("searchButton").addEventListener("click", function () {
+           const query = document.getElementById("searchInput").value.toLowerCase();
+           const result = events.find(event => event.name.toLowerCase().includes(query));
+           if (result) {
+               window.location.href = result.link;
+           } else {
+               alert("Event not found!");
+           }
+       });
+   </script>
+    
+</div>
+<section style="background: #f9f9f9; padding: 10px 20px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; font-family: Arial, sans-serif;">
+    <div style="text-align: center;">
+        <span style="font-weight: bold;">Excellent</span>
+        <span style="color: #FFD700;">★★★★★ </span>
+        <span style="display: block;"> 77 reviews on Trustpilot</span>
+    </div>
+    <div style="text-align: center;">
+        <span style="color: green; font-weight: bold;">✔️</span>
+        <span>Fueling the Passion of Sports Fans Everywhere</span>
+    </div>
+    <div style="text-align: center;">
+        <span style="color: green; font-weight: bold;">✔️</span>
+        <span>Over 1000 Customers Served</span>
+    </div>
+</section>
+
+
+<div class="hero">
+    <h2>Your Gateway to Exciting Sports Events</h2>
+    <p>Book tickets for your favorite events quickly and easily. Stay connected with the latest sports action in your city.</p>
+    <a class="button" href="events.html">Browse Events</a>
+    <a class="button" href="login.html">Login</a>
+</div>
+<p style="color: green; font-weight: bold; text-align: center; margin-bottom: 10px;">✔️ All our orders are 150% guaranteed</p>
+<section class="section">
+    <h2>Latest Sports News</h2>
+    <div style="margin: 20px 0; padding: 20px; background: #f9f9f9; border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);">
+        <h3>⚽ Football</h3>
+        <ul style="list-style-type: none; padding-left: 0; line-height: 1.8;">
+            <li><strong>Barcelona:</strong> Held to a 2-2 draw by Celta de Vigo after a late red card for Marc Casadó. </li>
+            <li><strong>Manchester City:</strong> Suffers a 0-4 defeat to Tottenham, marking their fifth straight loss. </li>
+            <li><strong>Arsenal:</strong> Earns a comfortable 3-0 victory over Nottingham Forest, with goals from Saka, Partey, and Nwaneri. </li>
+            <li><strong>Chelsea:</strong> Secures a 2-1 win over Leicester City, powered by goals from Nicolas Jackson and Enzo Fernández.</li>
+        </ul>
+    </div>
+    
+    <div style="margin: 20px 0; padding: 20px; background: #f9f9f9; border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);">
+        <h3>🏀 Basketball</h3>
+        <ul style="list-style-type: none; padding-left: 0; line-height: 1.8;">
+            <li><strong>Golden State Warriors:</strong> Beat the Lakers 115-108 with an outstanding 40-point game by Stephen Curry. </li>
+            <li><strong>Boston Celtics:</strong> Cruise past Miami Heat 120-100 as Jayson Tatum shines. (23/11/2024, 22:30:00)</li>
+            <li><strong>Milwaukee Bucks:</strong> Hold off a late comeback by the Nets to win 98-95. (23/11/2024, 21:15:00)</li>
+        </ul>
+    </div>
+
+    <div style="margin: 20px 0; padding: 20px; background: #f9f9f9; border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);">
+        <h3>🎾 Tennis</h3>
+        <ul style="list-style-type: none; padding-left: 0; line-height: 1.8;">
+            <li><strong>Novak Djokovic:</strong> Wins the ATP Finals with a commanding victory over Daniil Medvedev, 6-3, 6-4. </li>
+            <li><strong>Iga Swiatek:</strong> Claims her fifth title of the year, defeating Coco Gauff 7-5, 6-2. </li>
+            <li><strong>Carlos Alcaraz:</strong> Advances to the Davis Cup final after a hard-fought 3-set win over Casper Ruud. </li>
+        </ul>
+    </div>
+</section>
+
+
+   
+
+    <section class="section">
+        <h2>How to Book Football Tickets</h2>
+        <p>
+            You decided you want to attend a UK football match and now you want to buy football tickets. We can help everyone without a season ticket to go and watch their favourite team live in the best football stadiums. Browse through our website to search for upcoming match-day seats at all prices in various sections of the football stadiums and follow these steps:
+        </p>
+        <div style="margin: 20px 0; background: #f9f9f9; border-radius: 10px; padding: 20px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);">
+            <ol style="list-style-type: decimal; padding-left: 20px; line-height: 1.8; font-size: 1rem;">
+                <li style="margin: 10px 0;">Select the match you want to attend.</li>
+                <li style="margin: 10px 0;">Select the tickets you want to book.</li>
+                <li style="margin: 10px 0;">Enter the number of tickets you need and click on <strong>Buy</strong>.</li>
+                <li style="margin: 10px 0;">Fill in your details and click <strong>Make Payment</strong>.</li>
+            </ol>
+        </div>
+        <p style="margin-top: 20px;">
+            That's it! After finishing these steps, we will perform a credit card check. Once everything is verified, we will complete your order and send it to the ticket seller. Get ready to enjoy the game live in the stadium!
+        </p>
+    </section>
+    
+    <section class="section">
+        <h2>Average Ticket Prices for Popular Sports</h2>
+        <p>
+            Curious about the cost of watching your favorite sports live? Here's a table showcasing the average ticket prices for some of the most popular sports worldwide. Plan your next live experience accordingly!
+        </p>
+        <table style="width: 100%; border-collapse: collapse; text-align: left; margin-top: 20px; background: #fff;">
+            <thead>
+                <tr style="background-color: #1a1a1a; color: #fff;">
+                    <th style="padding: 10px; border: 1px solid #ddd;">Sport</th>
+                    <th style="padding: 10px; border: 1px solid #ddd;">Average Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Football</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">£20</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Cricket</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">£10</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Basketball</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">£16</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #ddd;">Tennis</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">£350</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    
+    <footer>
+        <p>&copy; 2024 Sports Ticket Booking System</p>
+    </footer>
+
+    <button class="toggle-chatbot" onclick="toggleChatbot()">Chat with Us</button>
+
+    <div class="chatbot" id="chatbot">
+        <div class="chatbot-header" onclick="toggleChatbot()">Chatbot</div>
+        <div class="chatbot-body">
+            <p>Are you facing an issue?</p>
+            <div class="chatbot-options">
+                <button onclick="showResponse('Payment Issue')">Problem with Payment</button>
+                <button onclick="showResponse('Ticket Booking Issue')">Problem with Booking</button>
+                <button onclick="showResponse('Unable to Find Tickets')">Unable to Find Tickets</button>
+                <button onclick="showResponse('Login Issues')">Problem with Login</button>
+                <button onclick="showResponse('Event Cancellations')">Event Cancellations</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function toggleChatbot() {
+            const chatbot = document.getElementById('chatbot');
+            chatbot.style.display = chatbot.style.display === 'flex' ? 'none' : 'flex';
+        }
+    
+        function showResponse(option) {
+            const chatbotBody = document.querySelector('.chatbot-body');
+            let response = '';
+    
+            // Define responses for each issue
+            switch (option) {
+                case 'Payment Issue':
+                    response = `
+                        <p>You selected: <strong>Payment Issue</strong></p>
+                        <p>Here are steps to resolve the issue:</p>
+                        <ul>
+                            <li>Check if your payment method details are entered correctly.</li>
+                            <li>Ensure you have sufficient balance or credit.</li>
+                            <li>Try using an alternative payment method.</li>
+                            <li>Contact customer support if the problem persists.</li>
+                        </ul>`;
+                    break;
+    
+                case 'Ticket Booking Issue':
+                    response = `
+                        <p>You selected: <strong>Ticket Booking Issue</strong></p>
+                        <p>Here are steps to resolve the issue:</p>
+                        <ul>
+                            <li>Refresh the page and try again.</li>
+                            <li>Ensure all required fields are filled out correctly.</li>
+                            <li>Check if the event is still available for booking.</li>
+                            <li>Contact support for further assistance.</li>
+                        </ul>`;
+                    break;
+    
+                case 'Unable to Find Tickets':
+                    response = `
+                        <p>You selected: <strong>Unable to Find Tickets</strong></p>
+                        <p>Here are steps to resolve the issue:</p>
+                        <ul>
+                            <li>Use the search bar to look for the event by name or date.</li>
+                            <li>Browse the categories to locate your event.</li>
+                            <li>Check if the event is sold out.</li>
+                            <li>Contact support to verify ticket availability.</li>
+                        </ul>`;
+                    break;
+    
+                case 'Login Issues':
+                    response = `
+                        <p>You selected: <strong>Problem with Login</strong></p>
+                        <p>Here are steps to resolve the issue:</p>
+                        <ul>
+                            <li>Ensure you are entering the correct email and password.</li>
+                            <li>Use the "Forgot Password" option to reset your credentials.</li>
+                            <li>Clear your browser cache and try again.</li>
+                            <li>Contact support if the issue persists.</li>
+                        </ul>`;
+                    break;
+    
+                case 'Event Cancellations':
+                    response = `
+                        <p>You selected: <strong>Event Cancellations</strong></p>
+                        <p>Here are steps to handle the issue:</p>
+                        <ul>
+                            <li>Check your email for updates about the event.</li>
+                            <li>Review the cancellation policy for ticket refunds.</li>
+                            <li>Contact the event organizer for more information.</li>
+                            <li>Reach out to support for refund or rescheduling options.</li>
+                        </ul>`;
+                    break;
+    
+                default:
+                    response = `<p>Sorry, we couldn't identify the issue. Please contact support for help.</p>`;
+            }
+    
+            chatbotBody.innerHTML = response;
+        }
+    </script>
+    
+</body>
+</html>
